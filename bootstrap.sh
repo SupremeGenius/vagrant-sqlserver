@@ -4,7 +4,7 @@
 # Setup environment configuration
 export ACCEPT_EULA="Y"
 export MSSQL_PID="Developer"
-export MSSQL_SA_PASSWORD="Password123"
+export MSSQL_SA_PASSWORD="#SAPassword!"
 export DEBIAN_FRONTEND="noninteractive"
 # Ensure hostname is recognised
 sudo sed -i "s/^127\.0\.0\.1.*/127.0.0.1 localhost $HOSTNAME/g" /etc/hosts
@@ -38,7 +38,7 @@ echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
 echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
 echo "SQLServer: Running sqlcmd -Q SELECT @@version"
 export PATH="$PATH:/opt/mssql-tools/bin"
-sqlcmd -S localhost -U SA -P 'Password123' -Q "SELECT @@version;"
+sqlcmd -S localhost -U SA -P '$MSSQL_SA_PASSWORD' -Q "SELECT @@version;"
 echo "SQLServer: Guest IP address:"
 /sbin/ifconfig | grep 'inet addr:'
 echo "Bootstrap: DONE"

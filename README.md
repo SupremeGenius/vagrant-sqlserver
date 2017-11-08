@@ -3,10 +3,6 @@
 [Vagrant](https://www.vagrantup.com/) configuration to provide users with
 virtual environment for hassle-free fun with [SQL Server 2017](https://www.microsoft.com/en-us/sql-server/sql-server-2017).
 
-Looking for SQL Server 2017 on Windows VM? Check https://github.com/mloskot/vagrant-sqlserver-windows
-
-Looking for SQL Server on Windows VM? Check https://github.com/msabramo/vagrant_sql_server_express
-
 ## Features
 
 * Ubuntu 16.04
@@ -14,8 +10,8 @@ Looking for SQL Server on Windows VM? Check https://github.com/msabramo/vagrant_
 * [SQL Server command-line tools on Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools)
 * Pre-configured with
   * Vagrant default user: `vagrant` with password `vagrant`
-  * Port forwarding from host `2433` to guest `1433` (default).
-  * Database user `sa` with password `Password123`.
+  * Port forwarding from host `1433` to guest `1433` (default).
+  * Database user `sa` with password `#SAPassword!`.
   * Database `master`.
   * Set SQL Server edition to `Developer` with `MSSQL_PID="Developer`.
   * Other of configuration [Environment variable](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-configure-environment-variables) set to default.
@@ -56,12 +52,12 @@ Using [sqlcmd](https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility):
 
 ```
 vagrant ssh
-sqlcmd -S localhost -U SA -P 'Password123' -Q "SELECT @@version;"
-sqlcmd -S localhost -U SA -P 'Password123' -Q "SELECT name FROM sys.databases;"
+sqlcmd -S localhost -U SA -P '#SAPassword!' -Q "SELECT @@version;"
+sqlcmd -S localhost -U SA -P '#SAPassword!' -Q "SELECT name FROM sys.databases;"
 ```
 
 * Connect to SQL Server instance from host
 
 ```
-sqlcmd -S localhost,2433 -U SA -P 'Password123' -Q "SELECT name FROM sys.databases;"
+sqlcmd -S localhost,1433 -U SA -P '#SAPassword!' -Q "SELECT name FROM sys.databases;"
 ```

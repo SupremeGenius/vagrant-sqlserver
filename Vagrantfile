@@ -4,12 +4,11 @@
 # Vagrant virtual environments for SQL Server 2017 on Ubuntu Linux
 
 Vagrant.configure(2) do |config|
-  # Do not use official Ubuntu box, it is broken in many ways
-  # https://bugs.launchpad.net/cloud-images/+bug/1569237
-  config.vm.box = "bento/ubuntu-16.04"
-  config.vm.box_check_update = true
-  config.vm.network :forwarded_port, host: 2433, guest: 1433
-  config.vm.network "private_network", type: "dhcp"
+  config.vm.box = "ubuntu/xenial64"
+  
+  config.vm.network "private_network", ip: "192.168.50.4"
+  config.vm.network :forwarded_port, host: 1433, guest: 1433
+  
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "4096"
     vb.cpus = 4
