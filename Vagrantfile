@@ -12,7 +12,6 @@ Vagrant.configure(2) do |config|
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "4096"
     vb.cpus = 4
-    vb.name = "ubuntu-sqlserver"
   end
 
   scripts = [ "bootstrap.sh" ]
